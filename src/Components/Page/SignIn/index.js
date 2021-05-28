@@ -5,7 +5,7 @@ import MemberIn from "./MemberIn";
 
 import ScrutinizerIn from "./ScrutinizerIn";
 import { Link } from "react-router-dom";
-// 2-2 vaar ka hta mne b ny  yad
+
 class SignIn extends Component {
   constructor() {
     super();

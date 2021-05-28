@@ -1,5 +1,6 @@
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Button, Checkbox } from "antd";
 import { Link } from "react-router-dom";
+import AntdInput from "../../Common/AntdInput";
 
 const layout = {
   labelCol: {
@@ -25,31 +26,17 @@ const ScrutinizerIn = () => {
         remember: true,
       }}
     >
-      <Form.Item
-        label="Username"
-        name="username"
-        rules={[
-          {
-            required: true,
-            message: "Please input your username!",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-
-      <Form.Item
-        label="Password"
+      <AntdInput
+        label="Username*"
+        name="xyz"
+        message="Please input your username!"
+      />
+      <AntdInput
+        label="Password*"
         name="password"
-        rules={[
-          {
-            required: true,
-            message: "Please input your password!",
-          },
-        ]}
-      >
-        <Input.Password />
-      </Form.Item>
+        message="Please input your password!"
+        password
+      />
       <Form.Item
         wrapperCol={{
           offset: 17,
@@ -103,8 +90,8 @@ export default ScrutinizerIn;
 //         }
 
 //         else {
-//             this.validator.showMessages()
-//             this.forceUpdate()
+//             this.validator.showMessages()n
+//             this.forceUpdate()`
 //         }
 //     }
 //     render() {
@@ -124,7 +111,3 @@ export default ScrutinizerIn;
 //     }
 // }
 // export default ScrutinizerIn
-
-
-
-// Ui na changes hse color and margin spacing ne e pchi biju ke hve main done

@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import { Button, Form } from "reactstrap";
+import { Col, Row, Button, Form, FormGroup, Label } from "reactstrap";
 import SimpleReactValidator from "simple-react-validator";
 import Input from "./../../Common/Input/index";
 import Select from "./../../Common/Select/index";
-import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-// import './signup.css'
+import { connect } from "react-redux";
+
 
 const countryData = [
   { name: "India", value: "india" },
-  { name: "Pakistan", value: "pakistan" },
+  { name: "UK", value: "uk" },
   { name: "Usa", value: "Usa" },
   { name: "Canada", value: "canda" },
 ];
@@ -18,13 +18,14 @@ const stateData = [
   { name: "Gujarat", value: "gujarat" },
   { name: "Mp", value: "mp" },
 ];
-class Entity extends Component {
+
+class Member extends Component {
   constructor() {
     super();
     this.validator = new SimpleReactValidator({
       validators: {
         pancard: {
-          // name the rule
+     
           message: "Enter valid pancard number",
           rule: (val, params, validator) => {
             return validator.helpers.testRegex(
@@ -53,87 +54,91 @@ class Entity extends Component {
   onSubmit = () => {
     if (this.validator.allValid()) {
       console.log("validator");
-      this.props.setEntityDetails(this.state.field);
-      this.props.history.push("/entity-details");
+      this.props.setMemberDetails(this.state.field);
+      this.props.history.push("/member-details");
     } else {
       this.validator.showMessages();
       this.forceUpdate();
     }
   };
-
   render() {
-    console.log("hu enitity nu render", this.props);
+    console.log("hu member nu render");
     const { field } = this.state;
 
     return (
       <Form>
         <Input
           fieldName="name"
-          label="Entity Name"
+          label="Name"
           value={field["name"]}
           onChange={this.onChange}
           validator={this.validator}
         />
         <Input
+          fieldName="Mobile_Number"
           validationType="numeric|min:10|max:10"
-          fieldName="telephone_number"
-          label="Telephone Number"
-          value={field["telephone_number"]}
+          label="Mobile Number"
+          value={field["Mobile_Number"]}
           onChange={this.onChange}
           validator={this.validator}
         />
         <Input
           validationType="email"
-          fieldName="email"
+          fieldName="Email_Address"
           label="Email Address"
-          value={field["email"]}
+          value={field["Email_Address"]}
           onChange={this.onChange}
           validator={this.validator}
         />
         <Input
-          fieldName="pan"
+          fieldName="PAN"
           validationType="pancard"
           label="PAN"
-          value={field["pan"]}
+          value={field["PAN"]}
           onChange={this.onChange}
           validator={this.validator}
         />
         <Input
-          fieldName="cin"
-          label="CIN"
-          value={field["cin"]}
+          fieldName="Aadhaar_Number"
+          label="Aadhaar Number"
+          value={field["Aadhaar_Number"]}
           onChange={this.onChange}
           validator={this.validator}
         />
         <Input
-          fieldName="address"
+          fieldName="DIN"
+          label="DIN"
+          value={field["DIN"]}
+          onChange={this.onChange}
+          validator={this.validator}
+        />
+        <Input
+          fieldName="Address"
           label="Address"
-          value={field["address"]}
+          value={field["Address"]}
           onChange={this.onChange}
           validator={this.validator}
         />
         <Input
-          validationType="numeric|min:6|max:6"
-          fieldName="pinCode"
+          fieldName="Pincode"
           label="Pincode"
-          value={field["pinCode"]}
+          value={field["Pincode"]}
           onChange={this.onChange}
           validator={this.validator}
         />
-
         <Select
           data={countryData}
-          fieldName="country"
+          fieldName="Country"
           label="Country"
-          value={field["country"]}
+          value={field["Country"]}
           onChange={this.onChange}
           validator={this.validator}
         />
         <Select
           data={stateData}
-          fieldName="state"
+          fieldName="State"
           label="State"
-          value={field["state"]}
+          value={field["State"]}
           onChange={this.onChange}
           validator={this.validator}
         />
@@ -156,8 +161,8 @@ class Entity extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  setEntityDetails: (data) =>
-    dispatch({ type: "SET_ENTITY_DATA", payload: data }),
+  setMemberDetails: (data) =>
+    dispatch({ type: "SET_MEMBER_DATA", payload: data }),
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(Entity));
+export default withRouter(connect(null, mapDispatchToProps)(Member));

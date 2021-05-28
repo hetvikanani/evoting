@@ -91,5 +91,14 @@ code {
   background-image: url("./Image/Asset\ 1.svg");
   /* background-position: center; */
   background-repeat: no-repeat;
-  margin:1rem 1rem 0rem 1rem;
+  margin: 1rem 1rem 0rem 1rem;
+}
+.ant-form-item-required {
+  color: darkblue !important;
+  font-weight: bold;
+  fontSize: "small",
+}
+.ant-form-item-label
+  > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+  display: none !important;
 }

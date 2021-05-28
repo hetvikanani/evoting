@@ -3,6 +3,7 @@ import Entity from "./Entity";
 import Scrutinizer from "./Scrutinizer";
 
 import { Link } from "react-router-dom";
+import Member from "./Member";
 
 class SignUp extends Component {
   constructor() {
@@ -10,13 +11,18 @@ class SignUp extends Component {
     this.state = {
       entity: true,
       scrutinizer: false,
+      member: false,
     };
   }
 
-  entityClick = () => this.setState({ entity: true, scrutinizer: false });
+  entityClick = () =>
+    this.setState({ entity: true, scrutinizer: false, member: false });
 
-  scrutinizerClick = () => this.setState({ scrutinizer: true, entity: false });
+  scrutinizerClick = () =>
+    this.setState({ scrutinizer: true, entity: false, member: false });
 
+  memberClick = () =>
+    this.setState({ scrutinizer: false, entity: false, member: true });
   render() {
     console.log(
       "hu singup nu render",
@@ -63,9 +69,22 @@ class SignUp extends Component {
               SCRUTINIZER
             </label>
           </div>
+          <div className="p1">
+            <input
+              className="hover"
+              type="radio"
+              value="member"
+              checked={this.state.member}
+              onClick={this.memberClick}
+            />
+            <label onClick={this.memberClick} style={{ marginLeft: "5px" }}>
+              Member
+            </label>
+          </div>
         </div>
         {this.state.entity ? <Entity /> : null}
         {this.state.scrutinizer ? <Scrutinizer /> : null}
+        {this.state.member ? <Member /> : null}
       </>
     );
   }

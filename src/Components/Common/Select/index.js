@@ -19,9 +19,15 @@ export default class index extends Component {
 
     return (
       <FormGroup row>
-        <Label style={{ color: "darkblue", fontWeight: "bold", fontSize: "small" }} sm={4}>{label}*</Label>
+        <Label
+          style={{ color: "darkblue", fontWeight: "bold", fontSize: "small" }}
+          sm={4}
+        >
+          {label}*
+        </Label>
         <Col sm={8}>
           <Input
+          defaultValue=''
             value={value}
             onChange={(e) => onChange(fieldName, e)}
             type="select"

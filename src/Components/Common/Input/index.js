@@ -53,4 +53,3 @@ export default class index extends Component {
     );
   }
 }
-//tu to na padti hti k

@@ -1,5 +1,6 @@
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Button, Checkbox } from "antd";
 import { Link } from "react-router-dom";
+import AntdInput from "../../Common/AntdInput";
 const layout = {
   labelCol: {
     span: 8,
@@ -14,7 +15,9 @@ const tailLayout = {
     span: 16,
   },
 };
-/// hu aakha ma router nakhu chu okiee
+
+
+
 const EntityIn = () => {
   return (
     <Form
@@ -24,31 +27,17 @@ const EntityIn = () => {
         remember: true,
       }}
     >
-      <Form.Item
-        label="Username"
-        name="username"
-        rules={[
-          {
-            required: true,
-            message: "Please input your username!",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-
-      <Form.Item
-        label="Password"
+      <AntdInput
+        label="Username*"
+        name="xyz"
+        message="Please input your username!"
+      />
+      <AntdInput
+        label="Password*"
         name="password"
-        rules={[
-          {
-            required: true,
-            message: "Please input your password!",
-          },
-        ]}
-      >
-        <Input.Password />
-      </Form.Item>
+        message="Please input your password!"
+        password
+      />
       <Form.Item
         wrapperCol={{
           offset: 17,
@@ -59,11 +48,9 @@ const EntityIn = () => {
           <span>Forgot password?</span>
         </Link>
       </Form.Item>
-
       <Form.Item {...tailLayout} name="remember" valuePropName="checked">
         <Checkbox>Remember me</Checkbox>
       </Form.Item>
-
       <Form.Item {...tailLayout}>
         <Button shape="round" type="primary" htmlType="submit">
           Submit
@@ -131,3 +118,5 @@ export default EntityIn;
 //   }
 // }
 // export default EntityIn;
+
+
